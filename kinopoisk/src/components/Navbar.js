@@ -37,7 +37,7 @@ const Navbar = () => {
           />
         </div>
         <div className="d-flex">
-          <ul>
+          <ul className="d-flex justify-content-between align-items-center navbar__list">
             <li>
               <Link to="/">Home</Link>
             </li>

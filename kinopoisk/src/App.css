@@ -45,10 +45,16 @@ body {
 .main__navbar {
   display: flex;
   flex-wrap: nowrap;
+  max-width: 1200px;
+  align-items: center;
+}
+.main__navbar img {
+  margin-left: 20px;
 }
 
 .main__navbar .nav__search {
   width: 450px;
+  margin: 0 auto;
 }
 
 /* ------PC------*/
@@ -74,4 +80,29 @@ body {
 .img__movie__list {
   height: auto;
   width: 250px;
+}
+
+a {
+  text-decoration: none;
+}
+li {
+  list-style-type: none;
+}
+
+.navbar__list li {
+  margin-right: 5px;
+  font-weight: 500;
+  font-size: 20px;
+  padding-bottom: 7px;
+}
+.navbar__list li a {
+  color: rgb(182, 171, 171);
+}
+.navbar__list li:hover a {
+  color: white;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #f96200;
+}
+.navbar__list li a:active {
+  color: white;
 }
