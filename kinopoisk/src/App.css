@@ -1,0 +1,77 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #141414;
+  color: #ffffff;
+  width: 100%;
+}
+.logo img {
+  height: 20px;
+  width: auto;
+}
+.movie-app > .movie-app-row {
+  overflow-y: hidden;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+}
+
+.image-container {
+  position: relative;
+  transition: transform 0.2s;
+}
+
+.image-container:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+}
+
+.image-container:hover .overlay {
+  opacity: 1;
+}
+
+.overlay {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  transition: 0.5s ease;
+  opacity: 0;
+  bottom: 0;
+  font-size: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+.main__navbar {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.main__navbar .nav__search {
+  width: 450px;
+}
+
+/* ------PC------*/
+@media (max-width: 1240px) {
+}
+/* ------TABLET------*/
+@media (max-width: 991.98px) {
+}
+/* ------MOBILE------*/
+@media (max-width: 767.98px) {
+  .main__navbar .nav__search {
+    width: 250px;
+  }
+}
+
+/* ------MOBILE SMALL------*/
+@media (max-width: 479.98px) {
+  .main__navbar .nav__search {
+    width: 150px;
+  }
+}
+
+.img__movie__list {
+  height: auto;
+  width: 250px;
+}
