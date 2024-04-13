@@ -125,6 +125,9 @@ li {
   margin-left: 30px;
 }
 @media (max-width: 767.98px) {
+  .footer__ul {
+    justify-content: left;
+  }
   .footer__ul li {
     margin-left: 15px;
   }
@@ -182,5 +185,32 @@ li {
   color: rgb(182, 171, 171);
 }
 .footer__right__info a:hover {
+  color: white;
+}
+
+/* FilmPage */
+.film__movie {
+  text-align: center;
+}
+@media (max-width: 767.98px) {
+  .film__movie {
+    flex-wrap: wrap;
+    text-align: left;
+  }
+}
+.film__movie .film__poster {
+  padding-right: 40px;
+  padding-bottom: 20px;
+}
+.film__movie .film__poster img {
+  width: 300px;
+  height: auto;
+}
+.film__movie p {
+  font-size: 20px;
+  color: #f96200;
+}
+.film__movie span {
+  font-size: 15px;
   color: white;
 }
