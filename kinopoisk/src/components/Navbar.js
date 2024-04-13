@@ -6,9 +6,9 @@ import Footer from "./Footer";
 
 const Navbar = () => {
   const [movies, setMovies] = useState([]);
-  const [favourites, setFavourites] = useState([]);
   const [searchValue, setSearchValue] = useState("");
-  const [showModal, setShowModal] = useState(false); // Состояние для отображения/скрытия модального окна
+  const [showBurgerModal, setShowBurgerModal] = useState(false);
+  const [showSearchModal, setShowSearchModal] = useState(false);
 
   const getMovieRequest = async (searchValue) => {
     const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=c76745ee`;
@@ -18,7 +18,7 @@ const Navbar = () => {
 
     if (responseJson.Search) {
       setMovies(responseJson.Search);
-      setShowModal(true); // Показать модальное окно после получения результатов
+      setShowSearchModal(true);
     }
   };
 
@@ -26,6 +26,14 @@ const Navbar = () => {
     if (event.key === "Enter") {
       getMovieRequest(searchValue);
     }
+  };
+
+  const closeBurgerModal = () => {
+    setShowBurgerModal(false);
+  };
+
+  const closeSearchModal = () => {
+    setShowSearchModal(false);
   };
 
   return (
@@ -46,56 +54,93 @@ const Navbar = () => {
         <button
           className="rounded-3 m-2"
           type="button"
-          onClick={() => setShowModal(true)}
+          onClick={() => setShowBurgerModal(true)}
           aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon "></span>
         </button>
-        <div
-          className={`modal ${showModal ? "show" : ""}`}
-          tabIndex="-1"
-          role="dialog"
-          style={{ display: showModal ? "block" : "none" }}
-        >
-          <div className="modal-dialog " role="document">
-            <div className="modal-content">
-              <div className="modal-header justify-content-end">
-                <h5 className="modal-title">Menu</h5>
-                <button
-                  type="button"
-                  className="close"
-                  aria-label="Close"
-                  onClick={() => setShowModal(false)}
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div className="modal-body navbar__list navbar__menu_modal">
-                <ul className="navbar-nav">
-                  <li className="nav-item">
-                    <Link
-                      to="/"
-                      className="nav-link"
-                      onClick={() => setShowModal(false)}
-                    >
-                      Home
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link
-                      to="/favourite"
-                      className="nav-link"
-                      onClick={() => setShowModal(false)}
-                    >
-                      Favourite
-                    </Link>
-                  </li>
-                </ul>
-              </div>
+      </nav>
+      <div
+        className={`modal ${showBurgerModal ? "show" : ""}`}
+        tabIndex="-1"
+        role="dialog"
+        style={{ display: showBurgerModal ? "block" : "none" }}
+      >
+        <div className="modal-dialog " role="document">
+          <div className="modal-content">
+            <div className="modal-header justify-content-end">
+              <h5 className="modal-title">Burger Menu</h5>
+              <button
+                type="button"
+                className="close"
+                aria-label="Close"
+                onClick={closeBurgerModal}
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div className="modal-body navbar__list navbar__menu_modal">
+              <ul className="navbar-nav ">
+                <li className="nav-item">
+                  <Link
+                    to="/"
+                    className="nav-link"
+                    onClick={() => setShowBurgerModal(false)}
+                  >
+                    Home
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    to="/favourite"
+                    className="nav-link"
+                    onClick={() => setShowBurgerModal(false)}
+                  >
+                    Favourite
+                  </Link>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
-      </nav>
+      </div>
+      <div
+        className={`modal ${showSearchModal ? "show" : ""}`}
+        tabIndex="-1"
+        role="dialog"
+        style={{ display: showSearchModal ? "block" : "none" }}
+      >
+        <div className="modal-dialog " role="document">
+          <div className="modal-content text-black">
+            <div className="modal-header justify-content-end">
+              <h5 className="modal-title">Search Results</h5>
+              <button
+                type="button"
+                className="close"
+                aria-label="Close"
+                onClick={closeSearchModal}
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div className="modal-body">
+              <ul className="navbar-nav">
+                {movies.map((movie) => (
+                  <li className="nav-item" key={movie.imdbID}>
+                    <Link
+                      to={`/${movie.imdbID}`}
+                      className="nav-link"
+                      onClick={closeSearchModal}
+                    >
+                      {movie.Title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
       <Outlet />
       <Footer />
     </>
