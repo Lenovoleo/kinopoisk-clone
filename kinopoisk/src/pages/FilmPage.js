@@ -7,9 +7,8 @@ const FilmPage = () => {
 
   useEffect(() => {
     const fetchFilm = async () => {
-      // Замените URL на URL вашего API
       const response = await fetch(
-        `https://api.themoviedb.org/3/discover/movie?api_key=ab88fc04dcf79f30d46f96b2175713c3&id=${id}`
+        `https://api.themoviedb.org/3/movie/${id}?api_key=ab88fc04dcf79f30d46f96b2175713c3`
       );
       const data = await response.json();
 
