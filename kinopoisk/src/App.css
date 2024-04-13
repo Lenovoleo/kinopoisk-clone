@@ -88,7 +88,9 @@ a {
 li {
   list-style-type: none;
 }
-
+.navbar__menu_modal {
+  background-color: #1d1b1b;
+}
 .navbar__list li {
   margin-right: 5px;
   font-weight: 500;
@@ -98,11 +100,87 @@ li {
 .navbar__list li a {
   color: rgb(182, 171, 171);
 }
-.navbar__list li:hover a {
+.navbar__list li a:hover {
   color: white;
   padding-bottom: 5px;
   border-bottom: 2px solid #f96200;
 }
 .navbar__list li a:active {
+  color: white;
+}
+
+.footer__ul li a {
+  color: rgb(182, 171, 171);
+}
+.footer__ul li a:hover {
+  color: white;
+}
+
+.footer__ul {
+  padding-top: 50px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.footer__ul li {
+  margin-left: 30px;
+}
+@media (max-width: 767.98px) {
+  .footer__ul li {
+    margin-left: 15px;
+  }
+}
+
+.footer__install {
+  margin: 0 auto;
+  max-width: 300px;
+  justify-content: space-between;
+}
+.footer__install img {
+  width: 30px;
+  height: auto;
+}
+
+.footer__install a {
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(182, 171, 171);
+  background-color: #6d6d6d;
+  padding: 5px 10px;
+  border-radius: 10px;
+  color: rgb(182, 171, 171);
+}
+.footer__install a:hover {
+  background-color: #969595;
+  color: white;
+}
+.footer__install a p {
+  padding-top: 14px;
+  padding-left: 10px;
+}
+
+.footer__prog__list a {
+  color: rgb(182, 171, 171);
+}
+.footer__prog__list a:hover {
+  color: white;
+}
+.footer__left__info p {
+  color: rgb(182, 171, 171);
+}
+.footer__left__info span {
+  font-size: 12px;
+}
+.footer__prog__list ul {
+  max-width: 400px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.footer__prog__list ul li {
+  margin-right: 10px;
+}
+.footer__right__info a {
+  color: rgb(182, 171, 171);
+}
+.footer__right__info a:hover {
   color: white;
 }

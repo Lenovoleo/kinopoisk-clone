@@ -1,7 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const FilmPage = () => {
-  return <></>;
+  const { id } = useParams();
+  const [film, setFilm] = useState(null);
+
+  useEffect(() => {
+    const fetchFilm = async () => {
+      // Замените URL на URL вашего API
+      const response = await fetch(
+        `https://api.themoviedb.org/3/discover/movie?api_key=ab88fc04dcf79f30d46f96b2175713c3&id=${id}`
+      );
+      const data = await response.json();
+
+      setFilm(data);
+    };
+
+    fetchFilm();
+  }, [id]);
+
+  if (!film) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div className="movie">
+      <h3>{film.title}</h3>
+      <p>{film.overview}</p>
+    </div>
+  );
 };
 
 export default FilmPage;
