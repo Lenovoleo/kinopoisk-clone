@@ -1,5 +1,3 @@
-// FavouritePage.js
-
 import React, { useState, useEffect } from "react";
 import MovieList from "../components/MovieList";
 import MovieListHeading from "../components/MovieListHeading";
@@ -49,7 +47,7 @@ const FavouritePage = () => {
       "react-movie-app-favourites",
       JSON.stringify(updatedFavourites)
     );
-    // Update detailedMovies efficiently
+
     setDetailedMovies((prevMovies) =>
       prevMovies.filter((movie) => movie.id !== movieId)
     );

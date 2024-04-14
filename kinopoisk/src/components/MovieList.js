@@ -1,5 +1,3 @@
-// MovieList.js
-
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -21,7 +19,7 @@ const MovieList = ({ movies, handleFavouritesClick, favouriteComponent }) => {
             />
           </Link>
           <div
-            onClick={() => handleFavouritesClick(movie)} // Передаем объект фильма
+            onClick={() => handleFavouritesClick(movie)}
             className="overlay d-flex align-items-center justify-content-center"
           >
             <FavouriteComponent />
