@@ -25,7 +25,15 @@ body {
   cursor: pointer;
   transform: scale(1.02);
 }
-
+@media (max-width: 767.98px) {
+  .image-container .overlay {
+    opacity: 1;
+  }
+  .image-container {
+    cursor: pointer;
+    transform: scale(1.02);
+  }
+}
 .image-container:hover .overlay {
   opacity: 1;
 }
@@ -214,4 +222,10 @@ li {
 .film__movie span {
   font-size: 15px;
   color: white;
+}
+
+.search__model__img {
+  height: 40px;
+  width: 60px;
+  margin-right: 5px;
 }

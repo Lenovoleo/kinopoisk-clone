@@ -57,7 +57,7 @@ const FavouritePage = () => {
     <div className="container">
       <MovieListHeading heading="My Favourite Movies" />
       <div className="col justify-content-center d-flex">
-        <div className="col-md-8">
+        <div className="col-md-8 d-flex flex-wrap w-100 container-fluid justify-content-center">
           {isLoading ? (
             <div>Loading...</div>
           ) : detailedMovies.length > 0 ? (
@@ -67,7 +67,9 @@ const FavouritePage = () => {
               handleFavouritesClick={removeFromFavourites}
             />
           ) : (
-            <div>No favourite movies found.</div>
+            <div className="d-flex justify-content-center pt-5 mt-5 fs-3">
+              No favourite movies found.
+            </div>
           )}
         </div>
       </div>

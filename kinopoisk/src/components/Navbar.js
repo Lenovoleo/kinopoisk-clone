@@ -11,13 +11,13 @@ const Navbar = () => {
   const [showSearchModal, setShowSearchModal] = useState(false);
 
   const getMovieRequest = async (searchValue) => {
-    const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=c76745ee`;
+    const url = `https://api.themoviedb.org/3/search/movie?api_key=ab88fc04dcf79f30d46f96b2175713c3&query=${searchValue}`;
 
     const response = await fetch(url);
-    const responseJson = await response.json();
+    const data = await response.json();
 
-    if (responseJson.Search) {
-      setMovies(responseJson.Search);
+    if (data.results) {
+      setMovies(data.results);
       setShowSearchModal(true);
     }
   };
@@ -126,13 +126,18 @@ const Navbar = () => {
             <div className="modal-body">
               <ul className="navbar-nav">
                 {movies.map((movie) => (
-                  <li className="nav-item" key={movie.imdbID}>
+                  <li className="nav-item" key={movie.id}>
                     <Link
-                      to={`/${movie.imdbID}`}
+                      to={`/${movie.id}`}
                       className="nav-link"
                       onClick={closeSearchModal}
                     >
-                      {movie.Title}
+                      <img
+                        className="search__model__img"
+                        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                        alt={movie.title}
+                      />
+                      {movie.title}
                     </Link>
                   </li>
                 ))}
