@@ -107,6 +107,7 @@ li {
 }
 .navbar__list li a:active {
   color: white;
+  border-bottom: 2px solid #f96200;
 }
 
 .footer__ul li a {

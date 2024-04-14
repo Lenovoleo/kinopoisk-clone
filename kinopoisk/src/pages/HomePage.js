@@ -1,8 +1,9 @@
+// HomePage.js
+
 import React, { useState, useEffect } from "react";
 import MovieList from "../components/MovieList";
 import MovieListHeading from "../components/MovieListHeading";
 import AddFavourites from "../components/AddToFavourites";
-import RemoveFavourites from "../components/RemoveFavourites";
 
 const HomePage = () => {
   const [topMovies, setTopMovies] = useState([]);
@@ -27,6 +28,7 @@ const HomePage = () => {
       setComedyMovies(data.results);
     }
   };
+
   const getActionMovies = async () => {
     const url = `https://api.themoviedb.org/3/discover/movie?api_key=ab88fc04dcf79f30d46f96b2175713c3&with_genres=28`;
     const response = await fetch(url);
@@ -43,31 +45,31 @@ const HomePage = () => {
   }, []);
 
   useEffect(() => {
-    const movieFavourites = JSON.parse(
-      localStorage.getItem("react-movie-app-favourites")
-    );
-
+    const movieFavourites =
+      JSON.parse(sessionStorage.getItem("react-movie-app-favourites")) || [];
     setFavourites(movieFavourites);
   }, []);
 
-  const saveToLocalStorage = (items) => {
-    localStorage.setItem("react-movie-app-favourites", JSON.stringify(items));
+  const saveToSessionStorage = (items) => {
+    sessionStorage.setItem("react-movie-app-favourites", JSON.stringify(items));
   };
 
   const addFavouriteMovie = (movie) => {
-    const newFavouriteList = [...favourites, movie];
-
-    setFavourites(newFavouriteList);
-    saveToLocalStorage(newFavouriteList);
+    if (!favourites.some((fav) => fav.id === movie.id)) {
+      const newFavouriteList = [...favourites, movie];
+      setFavourites(newFavouriteList);
+      saveToSessionStorage(newFavouriteList);
+    } else {
+      console.log("Фильм уже добавлен в избранное.");
+    }
   };
 
-  const removeFavouriteMovie = (movie) => {
+  const removeFavouriteMovie = (movieId) => {
     const newFavouriteList = favourites.filter(
-      (favourite) => favourite.imdbID !== movie.imdbID
+      (favourite) => favourite.id !== movieId
     );
-
     setFavourites(newFavouriteList);
-    saveToLocalStorage(newFavouriteList);
+    saveToSessionStorage(newFavouriteList);
   };
 
   return (
@@ -95,7 +97,7 @@ const HomePage = () => {
       <div className="row d-flex align-items-center mt-4 mb-4">
         <MovieListHeading heading="Action >>" />
       </div>
-      <div className="d-flex movie-app-row">
+      <div className="d-flex favorite__movies">
         <MovieList
           movies={actionMovies}
           handleFavouritesClick={addFavouriteMovie}
