@@ -19,9 +19,10 @@
 Чтобы установить приложение, выполните следующие шаги:
 
 1.Клонируйте репозиторий с помощью команды:
-`https://github.com/Lenovoleo/kinopoisk-clone.git`
+`git clone https://github.com/Lenovoleo/kinopoisk-clone.git`
 
 2.  Перейдите в каталог с проектом:
+    `cd .\kinopoisk-clone\ `
     `cd .\kinopoisk\`
 
 3.Установите зависимости с помощью npm:
