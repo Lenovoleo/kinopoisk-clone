@@ -23,7 +23,7 @@ const Navbar = () => {
   };
 
   const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
+    if (event.key === "\n" || event.key === "Enter") {
       getMovieRequest(searchValue);
     }
   };
